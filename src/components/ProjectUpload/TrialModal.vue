@@ -47,7 +47,7 @@
                       <ul><li>單一資料檔：限csv及excel格式</li>
                           <li>單一影像檔：限JPG、MP4、AVI格式</li></ul>
                   </ol>
-                </p>
+               </p>
 
               </div>
             </slide>
