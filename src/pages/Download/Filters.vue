@@ -185,93 +185,7 @@ export default {
   data: function() {
     return {
       lang: getLanguage(),
-      speciesOptions: [
-        {
-          label: '空拍',
-          value: '5f0e833d3825a800573efd72',
-        },
-        {
-          label: '測試',
-          value: '5f0e833d3825a800573efd73',
-        },
-        {
-          label: '人',
-          value: '5f0e833d3825a800573efd74',
-        },
-        {
-          label: '定時測試',
-          value: '5f0e833d3825a800573efd75',
-        },
-        {
-          label: '工作照',
-          value: '5f0e833d3825a800573efd76',
-        },
-        {
-          label: '山羌',
-          value: '5f0e833d3825a800573efd77',
-        },
-        {
-          label: '水鹿',
-          value: '5f0e833d3825a800573efd78',
-        },
-        {
-          label: '獼猴',
-          value: '5f0e833d3825a800573efd79',
-        },
-        {
-          label: '鼬獾',
-          value: '5f0e833d3825a800573efd7a',
-        },
-        {
-          label: '山羌',
-          value: '5f0e833d3825a800573efd7b',
-        },
-
-        {
-          label: '野豬',
-          value: '5f2a72f5d3b2180063a64e4b',
-        },
-        {
-          label: '山羌',
-          value: '5f0e833d3825a800573efd7c',
-        },
-        {
-          label: '鼠類',
-          value: '5f0e833d3825a800573efd7d',
-        },
-        {
-          label: '白鼻心',
-          value: '5f0e833d3825a800573efd7e',
-        },
-        {
-          label: '藍腹鷴',
-          value: '5f0e833d3825a800573efd7f',
-        },
-        {
-          label: '食蟹獴',
-          value: '5f0e833d3825a800573efd80',
-        },
-        {
-          label: '狗',
-          value: '5f0e833d3825a800573efd81',
-        },
-        {
-          label: '麝香貓',
-          value: '5f10168eebf3f6002519cb71',
-        },
-        {
-          label: '黃喉貂',
-          value: '5f10168eebf3f6002519cb73',
-        },
-        {
-          label: '黃鼠狼',
-          value: '5f10168eebf3f6002519cb75',
-        },
-        {
-          label: '野兔',
-          value: '5f1016b8ebf3f6002519cb81',
-        },
-      ],
+      speciesOptions: [],
       startDate: '2001-01-01',
       endDate: '2025-01-01',
       startTime: { HH: '00', mm: '00' },
@@ -398,7 +312,7 @@ export default {
         options: {
           studyAreas: [],
           cameraLocations: [],
-          trips: ['test', 'oops'],
+          trips: [],
         },
       };
     },
