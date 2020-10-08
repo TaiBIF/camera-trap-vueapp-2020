@@ -96,6 +96,7 @@ export default {
   methods: {
     show(files) {
       // 跳出視窗選取會套用 accepted 設定，但是拖拉不會
+      console.log('file type:', files, navigator.appVersion);
       this.$emit(
         'change',
         [...files].filter(({ type, name }) => {
@@ -104,7 +105,7 @@ export default {
             name.toLowerCase().indexOf('.csv') >= 0 &&
             type == ''
           ) {
-            // windows (Chrome) cannot detact csv file type, ignore checked upload cce
+            // windows (Chrome) cannot detact csv file type, ignore checked upload csv
             return true;
           } else {
             return type !== '' && uploadAccept.includes(type);

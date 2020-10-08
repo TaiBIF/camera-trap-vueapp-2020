@@ -12,15 +12,14 @@ const getAnnotationQuery = file => {
         break;
       }
     }
-  } else if (
+  }
+  // HACK: for windows upload .csv file, file.type => excel!
+  if (
     navigator.appVersion.indexOf('Win') != -1 &&
-    file.name.toLowerCase().indexOf('.csv') >= 0 &&
-    file.type === ''
+    file.name.toLowerCase().indexOf('.csv') >= 0
   ) {
-    // HACK: for windows upload .csv file
     annotationType = 'annotation-csv';
   }
-  console.log(navigator.appVersion, file, annotationType);
 
   if (annotationType === '') {
     throw 'no annotation-type (not support)';
