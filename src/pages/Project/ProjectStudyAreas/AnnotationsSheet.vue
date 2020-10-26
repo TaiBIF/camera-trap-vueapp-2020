@@ -323,6 +323,7 @@ export default {
   },
   watch: {
     continuousRange: function(newVal, oldVal) {
+      //console.log({newVal, oldVal});
       if (!R.equals(newVal, oldVal)) {
         this.$refs.sheet.hotInstance.render();
         this.continuousRecover = newVal //continuousRange 不為 undefined 才要備份資料
@@ -546,6 +547,17 @@ export default {
 
       return td;
     },
+    setTimeTooltip(instance, td, row, col, prop, changeTime) {
+      resetTd(td); // td 會共用，所以每次都要重置
+
+      if (changeTime) {
+        // 1. 一般呈現使用 annotations
+        const tt = this.annotations[row].changeTime;
+        td.innerHTML = `<span class="text">${tt}</span>`;
+      }
+      //console.log(td);
+      return td;
+    },
     // 除了必填的 header 以外還會有其他不同的自定義欄位
     setSheetHeader() {
       this.HandsontableSetting.colHeaders = [
@@ -592,13 +604,12 @@ export default {
               td.innerHTML += '<div class="alert-box">!</div>';
               td.className = 'htFileInvalid';
             }
-
             return td;
           },
         },
         {
           data: 'time',
-          readOnly: true,
+          readOnly: !this.isEdit,
           renderer: (instance, td, row, col, prop, value) => {
             resetTd(td);
 
@@ -763,12 +774,15 @@ export default {
       let annotation = {
         fields: R.clone(this.annotations[row].fields),
         speciesTitle: this.annotations[row].species.title,
+        changeTime: this.annotations[row].time,
       };
       change.forEach(({ prop, newVal }) => {
         if (prop === 'species') {
           annotation.speciesTitle = newVal;
+        } else if (prop === 'time') {
+          annotation.changeTime = newVal;
         } else {
-          if (prop !== 'species') {
+          if (prop !== 'species' && prop !== 'time') {
             const targetIdx = R.findIndex(R.propEq('dataField', prop))(
               annotation.fields,
             );

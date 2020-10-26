@@ -286,7 +286,7 @@ export default {
         publishTime: project.publishTime,
       };
 
-      let isChanged = false;
+      let isChanged = true;
       if (JSON.stringify(oldLicenseInfo) !== JSON.stringify(newLicenseInfo)) {
         isChanged = true;
       }

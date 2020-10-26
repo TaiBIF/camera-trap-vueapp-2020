@@ -309,6 +309,7 @@ export default {
       const tagText = this.$el.querySelector('.tag-form__textarea').value;
       let annotation = {
         speciesTitle: this.annotation.species.title,
+        changeTime: this.annotation.time,
         tags: [
           {
             text: tagText,

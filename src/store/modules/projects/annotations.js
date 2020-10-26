@@ -85,17 +85,23 @@ const actions = {
     commit('saveQuery', query);
   },
   async setAnnotations({ commit }, { annotationId, body }) {
+    //console.log(body);
     commit('plusRequestProcessing');
     // const data = await setAnnotations(annotationId, body);
     // commit('updateAnnotations', data);
 
     // workaround 之後格式修改後拿掉
     try {
+      /*
+      if (body.changeTime) {
+        body.fields[2].value = body.changeTime;
+      }*/
       let data = await setAnnotations(annotationId, body);
-      data.fields = data.fields.map(v => ({
+      data.fields = body.fields.map(v => ({
         dataField: v.dataField.id,
         value: v.value,
       }));
+      console.log(data);
       commit('updateAnnotations', data);
     } catch (error) {
       console.log(error);
@@ -111,12 +117,14 @@ const actions = {
   async cloneAnnotations({ state, getters, commit, dispatch }, annotationIdx) {
     commit('plusRequestProcessing');
     const annotation = getters.annotations[annotationIdx];
+    console.log(annotation);
     const payload = {
       cameraLocation: annotation.cameraLocation,
       filename: annotation.filename,
       file: idx(annotation, _ => _.file.id),
       time: annotation.time,
       speciesTitle: annotation.species.title,
+      //changeTime: annotation.time,
       //fields: annotation.fields.filter(v => !!v.value),
       fields: [],
     };

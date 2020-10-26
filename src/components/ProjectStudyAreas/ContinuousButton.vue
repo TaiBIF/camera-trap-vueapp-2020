@@ -75,11 +75,11 @@ export default {
 .dropdown-menu {
   padding-left: 5px;
   padding-right: 5px;
-  width: 255px;
+  width: 260px;
   padding: 5px;
 
   > input {
-    width: 3em;
+    width: 4.5em;
     display: inline;
   }
 }

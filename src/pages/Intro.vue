@@ -552,6 +552,16 @@ eslint-disable prettier/prettier */ /* eslint-disable prettier/prettier */
                   台灣生物多樣性資訊入口網
                 </span>
               </span>
+              <span class="gov-item">
+                <img
+                  class="gov-logo"
+                  src="/assets/intro/logo-npust.png"
+                  srcset="/assets/intro/logo-npust.png"
+                />
+                <span class="text">
+                  國立屏東科技大學
+                </span>
+              </span>
             </small>
           </div>
         </div>

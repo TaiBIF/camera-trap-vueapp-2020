@@ -6,6 +6,7 @@ const getAnnotations = async query => {
     url: `/api/v1/annotations?${queryString.stringify(query)}`,
     method: 'GET',
   });
+  console.log(res);
   return res;
 };
 
@@ -15,6 +16,7 @@ const setAnnotations = async (annotationId, body) => {
     method: 'PUT',
     body,
   });
+  console.log(body);
   return res;
 };
 
