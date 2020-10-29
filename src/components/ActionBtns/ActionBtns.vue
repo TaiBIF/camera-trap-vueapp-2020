@@ -25,7 +25,6 @@
 
 <script>
 /* import getResponseMessage from '@/utils/responseMessage'; */
-
 export default {
   name: 'ActionBtns',
   props: {
@@ -50,7 +49,6 @@ export default {
       default: 200,
     },
   },
-
   methods: {
     handleClick: function() {
       this.$emit('submit');
@@ -72,7 +70,6 @@ export default {
 .action {
   display: flex;
   justify-content: space-between;
-
   & > .error > span {
     color: #d80c37;
   }

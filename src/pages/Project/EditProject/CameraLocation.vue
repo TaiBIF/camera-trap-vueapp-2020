@@ -116,18 +116,15 @@
 <script>
 import { HotTable } from '@handsontable/vue';
 import { createNamespacedHelpers } from 'vuex';
-import moment from 'moment';
-import vSelect from 'vue-select';
-
 import { dateFormatYYYYMMDD } from '@/utils/dateHelper';
 import { getProjectCameraLocationsByName } from '@/service';
 import ActionBtns from '@/components/ActionBtns/ActionBtns.vue';
 import InfoModal from '@/components/Modal/InfoModal.vue';
 import StudyAreaSidebar from '@/components/StudyAreaSidebar/StudyAreaSidebar.vue';
-
+import moment from 'moment';
+import vSelect from 'vue-select';
 const studyAreas = createNamespacedHelpers('studyAreas');
 const geodeticDatumEnum = ['WGS84', 'TWD97'];
-
 export default {
   components: {
     StudyAreaSidebar,
@@ -305,7 +302,6 @@ export default {
           ? { settingTime: dateFormatYYYYMMDD(v.settingTime) }
           : undefined),
       }));
-
       // 設定座標係預設值
       const allGeodetic = this.HandsontableSetting.data.map(
         v => v.geodeticDatum,
@@ -422,11 +418,9 @@ export default {
     padding-right: 1rem;
   }
 }
-
 #geodetic-label {
   align-self: center !important;
 }
-
 #geodetic-select {
   width: 120px;
 }

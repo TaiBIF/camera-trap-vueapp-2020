@@ -205,7 +205,7 @@ export default {
     downloadCsvLink() {
       return `${process.env.VUE_APP_API_URL}/api/v1/projects/${
         this.projectId
-      }/example.csv`;
+      }/example.xlsx`;
     },
     downloadDwCALink() {
       return `${process.env.VUE_APP_API_URL}/api/v1/projects/${
