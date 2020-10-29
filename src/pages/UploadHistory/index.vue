@@ -111,7 +111,8 @@
             </div>
             <div
               v-if="
-                (row.state === 'success' || row.state === 'cancel') &&
+                row.project &&
+                  (row.state === 'success' || row.state === 'cancel') &&
                   row.file.type === 'annotation-csv'
               "
             >
