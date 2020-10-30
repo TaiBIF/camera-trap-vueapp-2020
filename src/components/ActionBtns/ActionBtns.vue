@@ -1,7 +1,7 @@
 <template>
   <div class="action">
     <div v-if="status === 200" class="success">
-      <span>{{ responseMessage }}</span>
+      <span></span>
     </div>
     <div>
       <div class="btn btn-default" @click="$emit('cancel')">
@@ -44,7 +44,7 @@ export default {
     },
     status: {
       type: Number,
-      default: 0,
+      default: 200,
     },
   },
   methods: {

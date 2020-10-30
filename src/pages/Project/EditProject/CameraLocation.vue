@@ -85,7 +85,6 @@
     <ActionBtns
       @cancel="handleClickCancel"
       @submit="doSubmit"
-      @handler="update()"
       :status="status"
       :error="error"
       :disabledSubmit="!(canSubmit || !disabledSubmit)"
@@ -144,7 +143,7 @@ export default {
     return {
       geodeticDatumEnum,
       errorMessage: undefined,
-      status: 0,
+      status: undefined,
       showInfoModal: false,
       error: undefined,
       currentStudyAreaId: undefined,
