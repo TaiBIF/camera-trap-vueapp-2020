@@ -1,10 +1,7 @@
 <template>
   <div class="action">
-    <div v-if="status === undefined || !!responseMessage" class="error">
-      <span>{{ responseMessage }}</span>
-    </div>
     <div v-if="status === 200" class="success">
-      <span></span>
+      <span>{{ responseMessage }}</span>
     </div>
     <div>
       <div class="btn btn-default" @click="$emit('cancel')">
@@ -24,7 +21,8 @@
 </template>
 
 <script>
-/* import getResponseMessage from '@/utils/responseMessage'; */
+import getResponseMessage from '@/utils/responseMessage';
+
 export default {
   name: 'ActionBtns',
   props: {
@@ -46,21 +44,32 @@ export default {
     },
     status: {
       type: Number,
-      default: 200,
+      default: 0,
     },
   },
   methods: {
+    responseMessage: function() {
+      if (this.response) {
+        return getResponseMessage(this.response.status);
+      }
+    },
     handleClick: function() {
       this.$emit('submit');
     },
     responsing: function() {
+      console.log(this.status);
       if (this.status == 200) {
         alert('設定已儲存');
+      } else if (this.status == 0) {
+        alert('請檢查是否填寫正確');
+      } else {
+        alert('設定未完全');
       }
     },
     handler: function() {
       this.handleClick();
       this.responsing();
+      this.$emit('handler', this.status);
     },
   },
 };
@@ -70,6 +79,7 @@ export default {
 .action {
   display: flex;
   justify-content: space-between;
+
   & > .error > span {
     color: #d80c37;
   }

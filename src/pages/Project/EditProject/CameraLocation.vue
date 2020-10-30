@@ -85,6 +85,7 @@
     <ActionBtns
       @cancel="handleClickCancel"
       @submit="doSubmit"
+      @handler="update()"
       :status="status"
       :error="error"
       :disabledSubmit="!(canSubmit || !disabledSubmit)"
@@ -143,7 +144,7 @@ export default {
     return {
       geodeticDatumEnum,
       errorMessage: undefined,
-      status: undefined,
+      status: 0,
       showInfoModal: false,
       error: undefined,
       currentStudyAreaId: undefined,
@@ -277,6 +278,7 @@ export default {
         data: [],
       },
       disabledSubmit: true,
+      check: [],
     };
   },
   props: {
@@ -313,6 +315,17 @@ export default {
           }
         });
     },
+    getStatus: function() {
+      this.HandsontableSetting.data.map(v => {
+        if (v.name && v.longitude && v.latitude) {
+          console.log(this.status);
+          this.status = 200;
+        } else {
+          console.log(this.status);
+          this.status = 500;
+        }
+      });
+    },
   },
   computed: {
     ...studyAreas.mapGetters(['studyAreas']),
@@ -334,6 +347,16 @@ export default {
       'getProjectCameraLocations',
       'modifyProjectCameraLocations',
     ]),
+    update: function() {
+      this.HandsontableSetting.data.map(v => {
+        if (v.name && v.longitude && v.latitude) {
+          this.status = 200;
+        } else {
+          console.log('oops');
+          this.status = 500;
+        }
+      });
+    },
     selectStudyArea(id) {
       this.currentStudyAreaId = id;
     },
@@ -392,7 +415,7 @@ export default {
             geodeticDatum: this.geodeticDatum,
           })),
         });
-        this.status = 200;
+        //this.status = 200;
         this.error = undefined;
       } catch (e) {
         this.error = e;
