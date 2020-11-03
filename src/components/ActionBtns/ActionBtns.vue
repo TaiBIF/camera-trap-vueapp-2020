@@ -1,6 +1,6 @@
 <template>
   <div class="action">
-    <div v-if="status === 200" class="success">
+    <div class="success">
       <span></span>
     </div>
     <div>
@@ -11,7 +11,7 @@
       <button
         type="submit"
         class="btn btn-orange"
-        @click.stop.prevent="handler"
+        @click.stop.prevent="handle"
         :disabled="!!disabledSubmit"
       >
         {{ submitBtnContext }}
@@ -57,19 +57,17 @@ export default {
       this.$emit('submit');
     },
     responsing: function() {
-      console.log(this.status);
+      //console.log(this.status);
       if (this.status == 200) {
         alert('設定已儲存');
-      } else if (this.status == 0) {
-        alert('請檢查是否填寫正確');
       } else {
-        alert('設定未完全');
+        alert('請檢查是否填寫正確');
       }
     },
-    handler: function() {
-      this.handleClick();
+    handle: function() {
       this.responsing();
-      this.$emit('handler', this.status);
+      this.handleClick();
+      this.$emit('handle', this.status);
     },
   },
 };
