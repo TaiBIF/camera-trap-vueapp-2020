@@ -85,8 +85,7 @@
     <ActionBtns
       @cancel="handleClickCancel"
       @submit="doSubmit"
-      @handle="update()"
-      :status="status"
+      :status="testStatus"
       :error="error"
       :disabledSubmit="!(canSubmit || !disabledSubmit)"
     />
@@ -144,12 +143,12 @@ export default {
     return {
       geodeticDatumEnum,
       errorMessage: undefined,
-      status: 0,
       showInfoModal: false,
       error: undefined,
       currentStudyAreaId: undefined,
       currentCameraLocationId: undefined,
       geodeticDatum: undefined,
+      testStatus: 0,
       HandsontableSetting: {
         stretchH: 'all',
         width: () => {
@@ -276,6 +275,7 @@ export default {
           },
         ],
         data: [],
+        beforeChange: this.beforeChangeVue,
       },
       disabledSubmit: true,
     };
@@ -335,15 +335,37 @@ export default {
       'getProjectCameraLocations',
       'modifyProjectCameraLocations',
     ]),
-    update() {
-      this.HandsontableSetting.data.map(v => {
-        if (v.name && v.longitude && v.latitude) {
-          this.status = 200;
-        } else {
-          console.log('oops');
-          this.status = 500;
+    beforeChangeVue(changes) {
+      for (var i = changes.length - 1; i >= 0; i--) {
+        if (changes[i][1] == 'name') {
+          if (changes[i][3] !== '') {
+            this.testStatus = 200;
+          } else {
+            this.testStatus = 500;
+          }
+        } else if (changes[i][1] == 'longitude') {
+          if (
+            changes[i][3] !== '' &&
+            !isNaN(Math.sign(changes[i][3])) &&
+            changes[i][3] >= 0
+          ) {
+            this.testStatus = 200;
+          } else {
+            this.testStatus = 500;
+          }
+        } else if (changes[i][1] == 'latitude') {
+          if (
+            changes[i][3] !== '' &&
+            !isNaN(Math.sign(changes[i][3])) &&
+            changes[i][3] >= 0
+          ) {
+            this.testStatus = 200;
+          } else {
+            this.testStatus = 500;
+          }
         }
-      });
+      }
+      //console.log(this.testStatus);
     },
     selectStudyArea(id) {
       this.currentStudyAreaId = id;

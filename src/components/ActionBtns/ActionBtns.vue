@@ -60,6 +60,8 @@ export default {
       //console.log(this.status);
       if (this.status == 200) {
         alert('設定已儲存');
+      } else if (this.status == 500) {
+        alert('填寫錯誤，設定未儲存');
       } else {
         alert('請檢查是否填寫正確');
       }
