@@ -20,6 +20,18 @@ const getAnnotationQuery = file => {
   ) {
     annotationType = 'annotation-csv';
   }
+  if (
+    navigator.appVersion.indexOf('Win') != -1 &&
+    file.name.toLowerCase().indexOf('.xlsx') >= 0
+  ) {
+    annotationType = 'annotation-excel';
+  }
+  if (
+    navigator.appVersion.indexOf('Win') != -1 &&
+    file.name.toLowerCase().indexOf('.xls') >= 0
+  ) {
+    annotationType = 'annotation-excel';
+  }
 
   if (annotationType === '') {
     throw 'no annotation-type (not support)';

@@ -37,7 +37,7 @@
                   'annotation-excel',
                   'annotation-zip',
                   'annotation-image',
-                ].indexOf(row.file.type) < 0
+                ].indexOf(row.file.type) < 0 && row.file
               "
             >
               <i class="icon-folder"></i>
@@ -93,7 +93,10 @@
             <div
               v-if="
                 (row.state === 'success' || row.state === 'cancel') &&
-                  row.file.type !== 'annotation-csv'
+                  row.file.type !== 'annotation-csv' &&
+                  row.project &&
+                  row.cameraLocation &&
+                  row.cameraLocation.studyArea
               "
             >
               <a
