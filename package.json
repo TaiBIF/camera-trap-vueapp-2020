@@ -37,13 +37,14 @@
     "leaflet": "^1.4.0",
     "markdown-it": "^8.4.2",
     "moment": "^2.24.0",
+    "node-sass": "4.14.1",
     "popper.js": "^1.14.7",
     "query-string": "^6.4.2",
     "ramda": "^0.26.1",
     "v-charts": "^1.19.0",
     "v-tooltip": "^2.0.1",
     "vee-validate": "^2.2.3",
-    "vue": "^2.6.6",
+    "vue": "^2.6.12",
     "vue-carousel": "^0.18.0",
     "vue-carousel-3d": "^0.2.0",
     "vue-echarts": "^4.0.4",
@@ -65,7 +66,7 @@
     "@storybook/vue": "^5.0.10",
     "@vue/cli-plugin-babel": "^3.5.0",
     "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.6.0",
+    "@vue/cli-service": "^3.12.1",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
     "babel-preset-vue": "^2.0.2",
@@ -76,9 +77,8 @@
     "eslint-plugin-vue": "^5.0.0",
     "husky": "^3.0.3",
     "lint-staged": "^9.2.1",
-    "node-sass": "^4.13.1",
     "sass-loader": "^7.1.0",
     "storybook-vue-router": "^1.0.3",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.12"
   }
 }
