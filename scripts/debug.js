@@ -1,6 +1,7 @@
 const { exec } = require('child_process');
 const Vue = require('vue');
 
+/*
 const getSHA = () =>
   new Promise((resolve, reject) => {
     exec('git rev-parse HEAD', (err, stdout) => {
@@ -9,13 +10,13 @@ const getSHA = () =>
       resolve(stdout.replace('\n', ''));
     });
   });
-
+*/
 const out = {
   VUE_VER: Vue.version,
   BUILD_TIME: new Date().toString(),
 };
 
 (async () => {
-  out.SHA = await getSHA();
+  //out.SHA = await getSHA();
   console.log(JSON.stringify(out, null, 2));
 })();
